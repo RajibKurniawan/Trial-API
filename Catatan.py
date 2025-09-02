@@ -12,7 +12,7 @@ import pandas as pd
 app = FastAPI()
 
 #membuat password
-pasword= 12345
+pasword = 12345
 
 # endpoint -> standard untuk contoh : membuka halam utama (meminta data halaman utama)
 # 1. http function
@@ -51,10 +51,10 @@ def getData(username: str):
 # jika tidak ada api-key atau api-key != password maka responce eror
 # jika ada dan sesuai maka lanjut delete -> success
 
-@Catatan.delete("/data/{username}")
+@app.delete("/data/{username}")
 def deleteData(username: str, api_key: str = Header(None)):
     # cek authentication
-    if api_key == None or api_key != password:
+    if api_key == None or api_key != pasword:
         # respon eror -> object HTTPException
         raise HTTPException(status_code=401, detail="authentication gagal") 
 
